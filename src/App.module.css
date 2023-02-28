@@ -1,0 +1,15 @@
+.App {
+  font-family: "Lora", sans-serif;
+}
+
+.Main {
+  display: flex;
+  margin-top: 100px;
+  padding: 15px;
+  justify-content: center;
+  max-width: 600px;
+  min-height: 600px;
+  height: fit-content;
+  border: 1.5px solid black;
+  box-shadow: 0 0 7px #6f6f6f;
+}

@@ -1,0 +1,22 @@
+.NavBar {
+    background-color: #93cdfa;
+    border: 1px solid black;
+    padding: 0px 10px;
+  }
+  
+  .Active {
+    background-color: #dddcdc;
+    font-weight: bolder;
+    border-radius: 7%;
+    color: black;
+  }
+  
+  a:hover {
+    font-weight: 600;
+    color: black;
+  }
+  
+  .NavLink {
+    padding: 10px;
+    color: black;
+  }
