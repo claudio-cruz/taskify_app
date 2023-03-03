@@ -1,0 +1,37 @@
+.Form {
+    padding-top: 20px;
+  }
+  
+  .Input {
+    border: 1px solid #f0f1f9;
+    box-sizing: border-box;
+    border-radius: 2px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.573);
+  }
+  
+  .Header {
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 0.2em;;
+  }
+  
+  .Button {
+    background-color: #007bff;
+    align-content: center;
+    align-items: center;
+    border-radius: 6px;
+    margin: auto;
+    letter-spacing: .1rem;
+    font-weight: 400;
+    margin-top: 10px;
+  }
+  
+  .Link {
+    margin: 10px;
+    color: black;
+  }
