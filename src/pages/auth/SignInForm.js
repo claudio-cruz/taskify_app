@@ -24,10 +24,7 @@ function SignInForm() {
         event.preventDefault();
 
         try {
-            const { data } = await axios.post("/dj-rest-auth/login/", {
-                password,
-                [username.includes("@") ? "email" : "username"]: username,
-            });
+            const { data } = await axios.post("/dj-rest-auth/login/", signInData);
             setCurrentUser(data.user);
             history.push("/");
         } catch (err) {
@@ -49,11 +46,11 @@ function SignInForm() {
 
                 <h1 className={styles.Header}>Sign In</h1>
 
-                <Form.Group controlId="usernameOrEmail">
+                <Form.Group controlId="username">
                     <Form.Control
                         className={styles.Input}
                         type="text"
-                        placeholder="Username or Email"
+                        placeholder="Username"
                         name="username"
                         value={username}
                         onChange={handleChange}

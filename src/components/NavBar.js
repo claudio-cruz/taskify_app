@@ -9,7 +9,7 @@ const NavBar = () => {
 
     const currentUser = useCurrentUser();
 
-    const loggedInIcons = <>{currentUser?.username}</>
+    const loggedInIcons = <>{currentUser?.username}</>;
 
     const loggedOutIcons = (
         <>
