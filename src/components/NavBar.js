@@ -3,7 +3,7 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import logo from "../assets/logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser } from '../contexts/CurrentUserContext';
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 const NavBar = () => {
 
@@ -28,7 +28,7 @@ const NavBar = () => {
                 <i className="fa-solid fa-user-plus"></i> Sign up
             </NavLink>
         </>
-    )
+    );
 
     return (
         <Navbar className={styles.NavBar} expand="md" fixed="top">
@@ -84,7 +84,9 @@ const NavBar = () => {
                         >
                             <i className="fa-solid fa-clipboard"></i> Notes
                         </NavLink>
+
                         {currentUser ? loggedInIcons : loggedOutIcons}
+
                     </Nav>
                 </Navbar.Collapse>
 
