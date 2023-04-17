@@ -1,0 +1,11 @@
+.profileImageContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  
+.profileImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  }
