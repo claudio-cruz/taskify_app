@@ -6,6 +6,7 @@ import SignUpForm from './pages/auth/SignUpFrom';
 import SignInForm from './pages/auth/SignInForm';
 import './api/axiosDefaults';
 import UserProfile from './pages/UserProfile';
+import TaskList from './pages/tasks/Tasks';
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
       <Container className={styles.Main}>
         <Switch>
           <Route exact path="/" render={() => <h1>Home</h1>} />
-          <Route exact path="/tasks" component={() => <h1>Tasks</h1>} />
+          <Route exact path="/tasks" component={() => <TaskList/>} />
           <Route exact path="/events" render={() => <h1>Events</h1>} />
           <Route exact path="/habits" render={() => <h1>Habits</h1>} />
           <Route exact path="/notes" render={() => <h1>Notes</h1>} />
