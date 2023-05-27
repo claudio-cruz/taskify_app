@@ -7,6 +7,7 @@ import SignInForm from './pages/auth/SignInForm';
 import './api/axiosDefaults';
 import UserProfile from './pages/UserProfile';
 import TaskList from './pages/tasks/Tasks';
+import TaskCreateForm from './pages/tasks/TaskCreateForm';
 
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
       <Container className={styles.Main}>
         <Switch>
           <Route exact path="/" render={() => <h1>Home</h1>} />
-          <Route exact path="/tasks" component={() => <TaskList/>} />
+          <Route exact path="/tasks" render={() => <TaskList/>} />
+          <Route exact path="/tasks/create" render={() => <TaskCreateForm/>}/>
           <Route exact path="/events" render={() => <h1>Events</h1>} />
           <Route exact path="/habits" render={() => <h1>Habits</h1>} />
           <Route exact path="/notes" render={() => <h1>Notes</h1>} />

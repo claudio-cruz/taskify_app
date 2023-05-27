@@ -3,11 +3,13 @@ import { fetchMoreData } from "../../utils/utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosReq } from "../../api/axiosDefaults";
 import Task from "./Task"
+import { NavLink } from "react-router-dom";
+import styles from "../../styles/NavBar.module.css";
 import { useLocation } from "react-router";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
-import { Table } from 'react-bootstrap';
+import { Button, Table, Row, Col } from 'react-bootstrap';
 
 
 function TaskList({ filter = "" }) {
@@ -42,23 +44,24 @@ function TaskList({ filter = "" }) {
   return (
     <Container>
 
-<div className="d-flex justify-content-center p-3">
-      <Form onSubmit={(event) => event.preventDefault()}>
-        <div className="input-group">
-          <Form.Control
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            type="text"
-            placeholder="Search tasks"
-          />
-          <div className="input-group-append">
-            <span className="input-group-text">
-            <i className="fa-solid fa-magnifying-glass" />
-            </span>
+      <div className="d-flex justify-content-center p-3">
+        <Form onSubmit={(event) => event.preventDefault()}>
+          <div className="input-group">
+            <Form.Control
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              type="text"
+              placeholder="Search tasks"
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">
+                <i className="fa-solid fa-magnifying-glass" />
+              </span>
+            </div>
           </div>
-        </div>
-      </Form>
-    </div>
+        </Form>
+      </div>
+
 
       <div>
         <Table striped bordered hover>
@@ -98,6 +101,23 @@ function TaskList({ filter = "" }) {
           <p>Loading...</p>
         </Container>
       )}
+
+      <Container>
+        <Row className="justify-content-end">
+          <Col xs="auto">
+            <Button variant="link">
+              
+              <NavLink
+                to="/tasks/create"
+                className={styles.NavLink}
+                activeClassName={styles.Active}
+            >
+                <i className="fa-solid fa-plus fa-lg"></i> Add Task
+            </NavLink>
+            </Button>
+          </Col>
+        </Row>
+      </Container>
 
     </Container>
   );
