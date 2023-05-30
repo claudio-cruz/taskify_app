@@ -106,14 +106,14 @@ function TaskList({ filter = "" }) {
         <Row className="justify-content-end">
           <Col xs="auto">
             <Button variant="link">
-              
+
               <NavLink
                 to="/tasks/create"
                 className={styles.NavLink}
                 activeClassName={styles.Active}
-            >
-                <i className="fa-solid fa-plus fa-lg"></i> Add Task
-            </NavLink>
+              >
+                <i className="fa-solid fa-plus"></i> Add Task
+              </NavLink>
             </Button>
           </Col>
         </Row>

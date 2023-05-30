@@ -1,0 +1,29 @@
+.cancelbtn {
+    background-color: #ff9999;
+    margin: 5px 10px;
+    font-weight: 500;
+    color: black;
+    border-color: black;
+}
+
+.submitbtn {
+    background-color: #a3c1ad;
+    margin: 5px 10px;
+    font-weight: 500;
+    color: black;
+    border-color: black;
+}
+
+.cancelbtn:hover {
+    font-weight: 600;
+    background-color: #ff9999;
+    color: black;
+    border-color: black;
+}
+
+.submitbtn:hover {
+    font-weight: 600;
+    background-color: #a3c1ad;
+    color: black;
+    border-color: black;
+}
