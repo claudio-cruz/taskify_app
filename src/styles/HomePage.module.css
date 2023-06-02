@@ -1,0 +1,18 @@
+p {
+    margin: 10px 0px;
+}
+
+a {
+    text-decoration: none;
+    text-align: center;
+    color: black;
+}
+
+.Title {
+    text-align: center;
+    margin: 5px 0px;
+}
+
+.Rows {
+    text-align: center;
+}
