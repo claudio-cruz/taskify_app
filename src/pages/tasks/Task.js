@@ -12,6 +12,7 @@ const Task = (props) => {
     priority,
     category,
   } = props;
+  
 
   // const currentUser = useCurrentUser();
   // const history = useHistory();

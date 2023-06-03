@@ -22,10 +22,10 @@ function TaskCreateForm() {
 
   const [taskData, setTaskData] = useState({
     task: "",
-    due_date: "",
+    due_date: null,
     description: "",
-    priority: "",
-    category: "",
+    priority: "low",
+    category: "other",
   });
   const { task, due_date, description, priority, category } = taskData;
 
@@ -38,32 +38,37 @@ function TaskCreateForm() {
     });
   };
 
-  const handleDateChange = (event) => {
+  const handleDateChange = (date) => {
     setTaskData({
       ...taskData,
-      due_date: event,
+      due_date: date,
     });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+  
     const formData = new FormData();
-
+  
     formData.append("task", task);
-    formData.append("due_date", due_date);
+    if (due_date !== null) {
+      formData.append("due_date", due_date.toISOString());
+    }
     formData.append("description", description);
     formData.append("priority", priority);
     formData.append("category", category);
-
+  
     try {
-      const { data } = await axiosReq.task("/tasks/", formData);
-      history.push(`/tasks/${data.id}`);
+      await axiosReq.post("/tasks/", formData);
+      history.push(`/tasks/`);
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
+      console.log(err.response);
+      console.log(due_date);
+      console.log(typeof due_date);
     }
-
   };
 
   const textFields = (
@@ -90,10 +95,18 @@ function TaskCreateForm() {
           name="due_date"
           selected={due_date}
           onChange={handleDateChange}
-          dateFormat="yyyy-MM-dd"
+          dateFormat="yyyy-MM-dd HH:mm"
+          showTimeSelect
+          timeFormat="HH:mm"
+          timeIntervals={15}
           className="form-control"
         />
       </Form.Group>
+      {errors?.task?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
         <Form.Label>Description</Form.Label>
@@ -105,11 +118,6 @@ function TaskCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
-      {errors?.content?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
 
       <Form.Group>
         <Form.Label>Priority</Form.Label>
@@ -119,16 +127,11 @@ function TaskCreateForm() {
           value={priority}
           onChange={handleChange}
         >
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
         </Form.Control>
       </Form.Group>
-      {errors?.task?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
 
       <Form.Group>
         <Form.Label>Category</Form.Label>
@@ -138,20 +141,15 @@ function TaskCreateForm() {
           value={category}
           onChange={handleChange}
         >
-          <option value="Other">Other</option>
-          <option value="Study">Study</option>
-          <option value="Finance">Finance</option>
-          <option value="Work">Work</option>
-          <option value="Sport">Sport</option>
-          <option value="Social">Social</option>
-          <option value="Home">Home</option>
+          <option value="other">Other</option>
+          <option value="study">Study</option>
+          <option value="finance">Finance</option>
+          <option value="work">Work</option>
+          <option value="sport">Sport</option>
+          <option value="social">Social</option>
+          <option value="home">Home</option>
         </Form.Control>
       </Form.Group>
-      {errors?.task?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
 
       <Button className={styles.cancelbtn} onClick={() => history.goBack()}>Cancel</Button>
       <Button className={styles.submitbtn} type="submit">Create</Button>
