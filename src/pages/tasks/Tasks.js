@@ -9,11 +9,12 @@ import { useLocation } from "react-router";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
-import { Button, Table, Row, Col } from 'react-bootstrap';
+import { Button, Table, Row, Col, Spinner  } from 'react-bootstrap';
 
 
 function TaskList({ filter = "" }) {
-  const [tasks, setTasks] = useState({ results: [] });
+
+  const [tasks, setTasks] = useState({ results: [], next: null });
   const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
@@ -68,7 +69,7 @@ function TaskList({ filter = "" }) {
           <thead>
             <tr>
               <th className="w-25 p-2">Task</th>
-              <th className="w-25 p-2">Due-Date</th>
+              <th className="w-25 p-2">Date</th>
               <th className="w-25 p-2">Category</th>
               <th className="w-25 p-2">Priority</th>
             </tr>
@@ -84,9 +85,10 @@ function TaskList({ filter = "" }) {
                 <Task key={task.id} {...task} setTasks={setTasks} />
               ))}
               dataLength={tasks.results.length}
-              loader={"Loding..."}
+              loader={<Spinner animation="border" variant="dark"/>}
               hasMore={!!tasks.next}
               next={() => fetchMoreData(tasks, setTasks)}
+              endMessage={<p>No more tasks.</p>}
             />
           ) : (
             // if no results
@@ -97,8 +99,8 @@ function TaskList({ filter = "" }) {
         </>
       ) : (
         // loding data
-        <Container >
-          <p>Loading...</p>
+        <Container>
+          <Spinner animation="border" variant="dark" text-align="center" />
         </Container>
       )}
 

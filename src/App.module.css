@@ -5,11 +5,10 @@
 .Main {
   display: flex;
   margin-top: 75px;
-  padding: 15px;
+  padding: 3px;
   justify-content: center;
   max-width: 600px;
-  min-height: 600px;
-  height: fit-content;
+  overflow-x: scroll;
   border: 1.5px solid black;
   box-shadow: 0 0 7px #6f6f6f;
 }
