@@ -9,7 +9,7 @@ import { useLocation } from "react-router";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
-import { Button, Table, Row, Col, Spinner  } from 'react-bootstrap';
+import { Button, Row, Col, Spinner  } from 'react-bootstrap';
 
 
 function TaskList({ filter = "" }) {
@@ -63,20 +63,6 @@ function TaskList({ filter = "" }) {
         </Form>
       </div>
 
-
-      <div>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th className="w-25 p-2">Task</th>
-              <th className="w-25 p-2">Date</th>
-              <th className="w-25 p-2">Category</th>
-              <th className="w-25 p-2">Priority</th>
-            </tr>
-          </thead>
-        </Table>
-      </div>
-
       {hasLoaded ? (
         <>
           {tasks.results.length ? (
@@ -112,7 +98,7 @@ function TaskList({ filter = "" }) {
               <Link
                 to="/tasks/create"
                 className={styles.NavLink}
-                activeClassName={styles.Active}
+                activeclassname={styles.Active}
               >
                 <i className="fa-solid fa-plus"></i> Add Task
               </Link>
