@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Container, Row, Col, Dropdown, Form } from 'react-bootstrap';
 import Styles from '../../styles/Task.module.css'
 import { axiosRes } from "../../api/axiosDefaults";
+import { useHistory } from "react-router-dom";
 
 const Task = (props) => {
   const {
@@ -16,6 +17,11 @@ const Task = (props) => {
   } = props;
 
   const [deleted, setDeleted] = useState(false);
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/tasks/${id}/edit`);
+  };
 
   const handleDelete = async () => {
     try {
@@ -66,7 +72,7 @@ const Task = (props) => {
             <Dropdown.Toggle variant="primary" size="sm">
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item>
+              <Dropdown.Item onClick={handleEdit}>
                 <i className="fa-solid fa-pen-to-square"></i> Edit
               </Dropdown.Item>
               <Dropdown.Item onClick={handleDelete}>

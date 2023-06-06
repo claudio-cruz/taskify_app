@@ -3,7 +3,7 @@ import { fetchMoreData } from "../../utils/utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosReq } from "../../api/axiosDefaults";
 import Task from "./Task"
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "../../styles/NavBar.module.css";
 import { useLocation } from "react-router";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -109,13 +109,13 @@ function TaskList({ filter = "" }) {
           <Col xs="auto">
             <Button variant="link">
 
-              <NavLink
+              <Link
                 to="/tasks/create"
                 className={styles.NavLink}
                 activeClassName={styles.Active}
               >
                 <i className="fa-solid fa-plus"></i> Add Task
-              </NavLink>
+              </Link>
             </Button>
           </Col>
         </Row>

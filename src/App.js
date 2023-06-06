@@ -8,6 +8,7 @@ import './api/axiosDefaults';
 import UserProfile from './pages/UserProfile';
 import TaskList from './pages/tasks/Tasks';
 import TaskCreateForm from './pages/tasks/TaskCreateForm';
+import TaskEditForm from './pages/tasks/TaskEditForm';
 import HomePage from './pages/HomePage.js';
 
 
@@ -19,8 +20,9 @@ function App() {
       <Container className={styles.Main}>
         <Switch>
           <Route exact path="/" render={() => <HomePage/>} />
-          <Route exact path="/tasks" render={() => <TaskList/>} />
+          <Route exact path="/tasks" render={() => <TaskList/>}/>
           <Route exact path="/tasks/create" render={() => <TaskCreateForm/>}/>
+          <Route exact path="/tasks/:id/edit" render={() => <TaskEditForm />} />
           <Route exact path="/events" render={() => <h1>Events</h1>} />
           <Route exact path="/habits" render={() => <h1>Habits</h1>} />
           <Route exact path="/notes" render={() => <h1>Notes</h1>} />
