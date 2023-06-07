@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-
+import StyleAlerts from '../../styles/Alers.module.css'
 import styles from "../../styles/SignForms.module.css";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 import axios from "axios";
@@ -15,7 +15,7 @@ const SignUpForm = () => {
   const { username, email, password1, password2 } = signUpData;
 
   const [errors, setErrors] = useState({});
-
+  const [loggoutAlert, setLoggoutAlert] = useState(null);
   const history = useHistory();
 
   const handleChange = (event) => {
@@ -29,7 +29,11 @@ const SignUpForm = () => {
     event.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
-      history.push("/signin");
+      setLoggoutAlert(true)
+            setTimeout(() => {
+                setLoggoutAlert(false); // Reset success status after some time
+                history.push(`/`);
+            }, 2000);
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -37,6 +41,16 @@ const SignUpForm = () => {
 
   return (
     <Container className="d-flex justify-content-center align-items-center h-100">
+
+      <Alert
+        className={StyleAlerts.AlertMessage}
+        variant="success"
+        show={loggoutAlert}
+        onClose={() => setLoggoutAlert(false)}
+        dismissible
+      >
+        Sing up successfully!
+      </Alert>
 
       <Form className={styles.Form} onSubmit={handleSubmit}>
 

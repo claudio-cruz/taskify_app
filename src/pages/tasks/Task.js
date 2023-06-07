@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Dropdown, Form, Modal, Button } from 'react-bootstrap';
+import { Container, Row, Col, Dropdown, Form, Modal, Button, Alert } from 'react-bootstrap';
 import Styles from '../../styles/Task.module.css';
+import StyleAlerts from '../../styles/Alers.module.css'
 import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 
@@ -19,6 +20,8 @@ const Task = (props) => {
   const [deleted, setDeleted] = useState(false);
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
+  const [taskCompleteAlert, setTaskCompleteAlert] = useState(false);
+  const [taskDeleteAlert, setTaskDeleteAlert] = useState(false);
 
   const handleEdit = () => {
     history.push(`/tasks/${id}/edit`);
@@ -32,6 +35,11 @@ const Task = (props) => {
     try {
       await axiosRes.delete(`/tasks/${id}/`);
       setDeleted(true);
+      setTaskDeleteAlert(true); // Display success alert
+      setTimeout(() => {
+        setTaskDeleteAlert(false); // Reset success status after some time
+        history.push(`/tasks/`);
+      }, 2000);
     } catch (err) {
       // Handle error
     }
@@ -51,6 +59,12 @@ const Task = (props) => {
       if (onUpdateComplete) {
         onUpdateComplete(id, updatedCompleted);
       }
+
+      setTaskCompleteAlert(true); // Display success alert
+      setTimeout(() => {
+        setTaskCompleteAlert(false); // Reset success status after some time
+        history.push(`/tasks/`);
+      }, 2000);
     } catch (err) {
       // Handle error
     }
@@ -60,6 +74,28 @@ const Task = (props) => {
 
   return (
     <React.Fragment>
+
+      {/* Alerts */}
+      <Alert
+        className={StyleAlerts.AlertMessage}
+        variant="success"
+        show={taskCompleteAlert}
+        onClose={() => setTaskCompleteAlert(false)}
+        dismissible
+      >
+        Task toggled!
+      </Alert>
+
+      <Alert
+        className={StyleAlerts.AlertMessage}
+        variant="success"
+        show={taskDeleteAlert}
+        onClose={() => setTaskDeleteAlert(false)}
+        dismissible
+      >
+        Task deleted successfully!
+      </Alert>
+
       <Container className={Styles.TaskContainer}>
         <Row>
           <Col xs={9} md={10}>
@@ -106,7 +142,7 @@ const Task = (props) => {
           <Modal.Header closeButton>
             <Modal.Title>Confirm Delete</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Are you sure you want to delete this task?</Modal.Body>
+          <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={() => setShowModal(false)}>
               Cancel
@@ -117,6 +153,7 @@ const Task = (props) => {
           </Modal.Footer>
         </Modal>
       </Container>
+
     </React.Fragment>
   );
 };

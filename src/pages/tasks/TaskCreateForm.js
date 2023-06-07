@@ -8,12 +8,13 @@ import Alert from "react-bootstrap/Alert";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "../../styles/Buttons.module.css";
+import StyleAlerts from '../../styles/Alers.module.css'
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
 function TaskCreateForm() {
   const [errors, setErrors] = useState({});
-  const [success, setSuccess] = useState(false); // State for success status
+  const [taskCreateAlert, setTaskCreateAlert] = useState(false); // State for success status
 
   const [taskData, setTaskData] = useState({
     task: "",
@@ -55,11 +56,11 @@ function TaskCreateForm() {
 
     try {
       await axiosReq.post("/tasks/", formData);
-      setSuccess(true); // Set success status to true
+      setTaskCreateAlert(true); // Set success status to true
       setTimeout(() => {
-        setSuccess(false); // Reset success status after some time
+        setTaskCreateAlert(false); // Reset success status after some time
         history.push(`/tasks/`);
-      }, 2000); // Redirect after 2 seconds
+      }, 2000);
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
@@ -161,8 +162,11 @@ function TaskCreateForm() {
   return (
     <Form onSubmit={handleSubmit}>
       <h3 className="text-center">Create new task</h3>
-      {success && ( // Display the alert message if success is true
-        <Alert variant="success" onClose={() => setSuccess(false)} dismissible>
+      {taskCreateAlert && ( // Display the alert message if success is true
+        <Alert
+        className={StyleAlerts.AlertMessage}
+        variant="success"
+        onClose={() => setTaskCreateAlert(false)} dismissible>
           New task created successfully!
         </Alert>
       )}

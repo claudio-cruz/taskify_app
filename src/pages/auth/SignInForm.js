@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-
+import StyleAlerts from '../../styles/Alers.module.css'
 import styles from "../../styles/SignForms.module.css";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 import axios from "axios";
@@ -17,7 +17,7 @@ function SignInForm() {
     const { username, password } = signInData;
 
     const [errors, setErrors] = useState({});
-
+    const [logginAlert, setLogginAlert] = useState(null);
     const history = useHistory();
 
     const handleSubmit = async (event) => {
@@ -26,8 +26,11 @@ function SignInForm() {
         try {
             const { data } = await axios.post("/dj-rest-auth/login/", signInData);
             setCurrentUser(data.user);
-            console.log(data)
-            history.push("/");
+            setLogginAlert(true)
+            setTimeout(() => {
+                setLogginAlert(false); // Reset success status after some time
+                history.push(`/`);
+            }, 2000);
         } catch (err) {
             setErrors(err.response?.data);
         }
@@ -89,6 +92,15 @@ function SignInForm() {
                     <Button className={styles.Button} type="submit">
                         Sign In
                     </Button>
+                    <Alert
+                        className={StyleAlerts.AlertMessage}
+                        variant="success"
+                        show={logginAlert}
+                        onClose={() => setLogginAlert(false)}
+                        dismissible
+                    >
+                        Log in successfully!
+                    </Alert>
                     {errors.non_field_errors?.map((message, idx) => (
                         <Alert key={idx} variant="warning" className="mt-3">
                             {message}

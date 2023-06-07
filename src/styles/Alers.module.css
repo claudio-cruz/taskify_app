@@ -1,0 +1,7 @@
+.AlertMessage {
+    position: fixed;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+}
