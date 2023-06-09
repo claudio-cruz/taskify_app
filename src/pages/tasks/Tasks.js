@@ -42,6 +42,7 @@ function TaskList({ filter = "" }) {
 
   return (
     <Container>
+      {/* Search bar */}
       <div className="d-flex justify-content-center p-3">
         <Form onSubmit={(event) => event.preventDefault()}>
           <div className="input-group">
@@ -60,6 +61,7 @@ function TaskList({ filter = "" }) {
         </Form>
       </div>
 
+      {/* Tab to filter the Task list */}
       <Tab.Container id="task-filters" defaultActiveKey="all">
         <Nav variant="tabs" className="justify-content-center mb-3">
           <Nav.Item>
@@ -211,7 +213,7 @@ function TaskList({ filter = "" }) {
         </Tab.Content>
       </Tab.Container>
 
-
+      {/* Add Task button */}
       <Container>
         <Row className="justify-content-end">
           <Col xs="auto">
@@ -227,6 +229,7 @@ function TaskList({ filter = "" }) {
           </Col>
         </Row>
       </Container>
+
     </Container>
   );
 }

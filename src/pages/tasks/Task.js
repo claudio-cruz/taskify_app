@@ -70,11 +70,8 @@ const Task = (props) => {
     }
   };
 
-  console.log(completed);
-
   return (
-    <React.Fragment>
-
+    <Container className={Styles.TaskContainer}>
       {/* Alerts */}
       <Alert
         className={StyleAlerts.AlertMessage}
@@ -96,65 +93,63 @@ const Task = (props) => {
         Task deleted successfully!
       </Alert>
 
-      <Container className={Styles.TaskContainer}>
+
+      <Row>
+        <Col xs={9} md={10}>
+          <h5 className='font-weight-bold'>{task}</h5>
+        </Col>
+        <Col xs={1}>
+          <Form.Check
+            className="form-check checkbox-lg"
+            aria-label="option 1"
+            defaultChecked={completed}
+            onClick={handleComplete}
+          />
+        </Col>
+        <Col xs={1}>
+          <Dropdown drop="down">
+            <Dropdown.Toggle variant="primary" size="sm">
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={handleEdit}>
+                <i className="fa-solid fa-pen-to-square"></i> Edit
+              </Dropdown.Item>
+              <Dropdown.Item onClick={handleDelete}>
+                <i className="fa-solid fa-trash-can"></i> Delete
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Col>
+      </Row>
+      {description && (
         <Row>
-          <Col xs={9} md={10}>
-            <h5 className='font-weight-bold'>{task}</h5>
-          </Col>
-          <Col xs={1}>
-            <Form.Check
-              className="form-check checkbox-lg"
-              aria-label="option 1"
-              defaultChecked={completed}
-              onClick={handleComplete}
-            />
-          </Col>
-          <Col xs={1}>
-            <Dropdown drop="down">
-              <Dropdown.Toggle variant="primary" size="sm">
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item onClick={handleEdit}>
-                  <i className="fa-solid fa-pen-to-square"></i> Edit
-                </Dropdown.Item>
-                <Dropdown.Item onClick={handleDelete}>
-                  <i className="fa-solid fa-trash-can"></i> Delete
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+          <Col>
+            <p>{description}</p>
           </Col>
         </Row>
-        {description && (
-          <Row>
-            <Col>
-              <p>{description}</p>
-            </Col>
-          </Row>
-        )}
-        <Row>
-          <Col xs={5}><p>{due_date}</p></Col>
-          <Col><p>{category}</p></Col>
-          <Col xs={3}><p>{priority}</p></Col>
-        </Row>
+      )}
+      <Row>
+        <Col xs={5}><p>{due_date}</p></Col>
+        <Col><p>{category}</p></Col>
+        <Col xs={3}><p>{priority}</p></Col>
+      </Row>
 
-        {/* Modal Confirmation */}
-        <Modal show={showModal} onHide={() => setShowModal(false)}>
-          <Modal.Header closeButton>
-            <Modal.Title>Confirm Delete</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={() => setShowModal(false)}>
-              Cancel
-            </Button>
-            <Button variant="danger" onClick={confirmDelete}>
-              Delete
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </Container>
-
-    </React.Fragment>
+      {/* Modal Confirmation */}
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Delete</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={confirmDelete}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </Container>
   );
 };
 

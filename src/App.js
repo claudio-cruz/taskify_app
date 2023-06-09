@@ -9,6 +9,7 @@ import UserProfile from './pages/profiles/UserProfile';
 import TaskList from './pages/tasks/Tasks';
 import TaskCreateForm from './pages/tasks/TaskCreateForm';
 import TaskEditForm from './pages/tasks/TaskEditForm';
+import NoteList from './pages/notes/Notes'
 import ProfileEditForm from './pages/profiles/ProfileEditForm'
 import HomePage from './pages/HomePage.js';
 
@@ -26,7 +27,7 @@ function App() {
           <Route exact path="/tasks/:id/edit" render={() => <TaskEditForm />} />
           <Route exact path="/events" render={() => <h1>Events</h1>} />
           <Route exact path="/habits" render={() => <h1>Habits</h1>} />
-          <Route exact path="/notes" render={() => <h1>Notes</h1>} />
+          <Route exact path="/notes" render={() => <NoteList/>} />
           <Route exact path="/profiles/:id" render={() => <UserProfile/>} />
           <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
