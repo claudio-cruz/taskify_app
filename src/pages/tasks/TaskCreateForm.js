@@ -14,7 +14,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 
 function TaskCreateForm() {
   const [errors, setErrors] = useState({});
-  const [taskCreateAlert, setTaskCreateAlert] = useState(false); // State for success status
+  const [taskCreateAlert, setTaskCreateAlert] = useState(false);
 
   const [taskData, setTaskData] = useState({
     task: "",
@@ -65,9 +65,6 @@ function TaskCreateForm() {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
-      console.log(err.response);
-      console.log(due_date);
-      console.log(typeof due_date);
     }
   };
 
