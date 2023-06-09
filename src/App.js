@@ -5,10 +5,11 @@ import { Route, Switch } from 'react-router-dom';
 import SignUpForm from './pages/auth/SignUpFrom';
 import SignInForm from './pages/auth/SignInForm';
 import './api/axiosDefaults';
-import UserProfile from './pages/UserProfile';
+import UserProfile from './pages/profiles/UserProfile';
 import TaskList from './pages/tasks/Tasks';
 import TaskCreateForm from './pages/tasks/TaskCreateForm';
 import TaskEditForm from './pages/tasks/TaskEditForm';
+import ProfileEditForm from './pages/profiles/ProfileEditForm'
 import HomePage from './pages/HomePage.js';
 
 
@@ -26,7 +27,8 @@ function App() {
           <Route exact path="/events" render={() => <h1>Events</h1>} />
           <Route exact path="/habits" render={() => <h1>Habits</h1>} />
           <Route exact path="/notes" render={() => <h1>Notes</h1>} />
-          <Route exact path="/profiles/:userId" render={() => <UserProfile/>} />
+          <Route exact path="/profiles/:id" render={() => <UserProfile/>} />
+          <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/signin" render={() => <SignInForm />} />
         </Switch>
