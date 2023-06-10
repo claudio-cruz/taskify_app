@@ -53,7 +53,6 @@ function ProfileEditForm() {
                     history.push('/');
                 }
             } catch (error) {
-                console.error(error);
             }
         };
         fetchData();

@@ -41,7 +41,6 @@ function TaskEditForm() {
           history.push('/');
         }
       } catch (error) {
-        console.error(error);
       }
     };
 

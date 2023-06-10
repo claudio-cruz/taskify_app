@@ -40,7 +40,6 @@ function NoteEditeForm() {
           history.push('/');
         }
       } catch (error) {
-        console.error(error);
       }
     };
 
