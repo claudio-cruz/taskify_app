@@ -2,38 +2,35 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import axios from 'axios';
 import { Form, Button, Row, Col, Container, Alert } from 'react-bootstrap';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 
 import styles from '../../styles/Buttons.module.css';
 
-function TaskEditForm() {
+function NoteEditeForm() {
   const [errors, setErrors] = useState({});
-  const [taskData, setTaskData] = useState({
-    task: '',
-    due_date: null,
-    description: '',
-    priority: 'low',
-    category: 'other',
+  const [noteData, setNoteData] = useState({
+    title: '',
+    content: '',
+    updated_at: '',
+    priority: '',
+    category: '',
   });
 
-  const { task, due_date, description, priority, category } = taskData;
+  const { title, content, updated_at, priority, category } = noteData;
   const history = useHistory();
   const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/tasks/${id}/`);
-        const { task, due_date, description, priority, category, is_owner } = response.data;
+        const response = await axios.get(`/notes/${id}/`);
+        const { title, content, updated_at, priority, category, is_owner } = response.data;
 
         if (is_owner) {
-          const parsedDueDate = due_date ? new Date(due_date) : null;
-          setTaskData((prevTaskData) => ({
-            ...prevTaskData,
-            task,
-            due_date: parsedDueDate,
-            description,
+          setNoteData((prevNoteData) => ({
+            ...prevNoteData,
+            title,
+            content,
+            updated_at,
             priority,
             category,
           }));
@@ -49,16 +46,9 @@ function TaskEditForm() {
   }, [history, id]);
 
   const handleChange = (event) => {
-    setTaskData((prevTaskData) => ({
-      ...prevTaskData,
+    setNoteData((prevNoteData) => ({
+      ...prevNoteData,
       [event.target.name]: event.target.value,
-    }));
-  };
-
-  const handleDateChange = (date) => {
-    setTaskData((prevTaskData) => ({
-      ...prevTaskData,
-      due_date: date,
     }));
   };
 
@@ -66,17 +56,15 @@ function TaskEditForm() {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append('task', task);
-    if (due_date !== null) {
-      formData.append('due_date', due_date.toISOString());
-    }
-    formData.append('description', description);
+    formData.append('title', title);
+    formData.append('content', content);
+    formData.append('updated_at', updated_at);
     formData.append('priority', priority);
     formData.append('category', category);
 
     try {
-      await axios.put(`/tasks/${id}/`, formData);
-      history.push(`/tasks/`);
+      await axios.put(`/notes/${id}/`, formData);
+      history.push(`/notes/`);
     } catch (error) {
       if (error.response?.status !== 401) {
         setErrors(error.response?.data);
@@ -87,41 +75,22 @@ function TaskEditForm() {
   const textFields = (
     <div className="text-center">
       <Form.Group>
-        <Form.Label>Task</Form.Label>
-        <Form.Control type="text" name="task" value={task} onChange={handleChange} />
+        <Form.Label>Title</Form.Label>
+        <Form.Control type="text" name="title" value={title} onChange={handleChange} />
       </Form.Group>
-      {errors?.task?.map((message, idx) => (
+      {errors?.title?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
       ))}
 
       <Form.Group>
-        <Form.Label>Due Date</Form.Label>
-        <DatePicker
-          name="due_date"
-          selected={due_date}
-          onChange={handleDateChange}
-          dateFormat="yyyy-MM-dd HH:mm"
-          showTimeSelect
-          timeFormat="HH:mm"
-          timeIntervals={15}
-          className="form-control"
-        />
-      </Form.Group>
-      {errors?.task?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
-
-      <Form.Group>
-        <Form.Label>Description</Form.Label>
+        <Form.Label>Content</Form.Label>
         <Form.Control
           as="textarea"
-          rows={2}
-          name="description"
-          value={description}
+          rows={5}
+          name="content"
+          value={content}
           onChange={handleChange}
         />
       </Form.Group>
@@ -159,14 +128,14 @@ function TaskEditForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h3 className="text-center">Task editor</h3>
+      <h3 className="text-center">Note editor</h3>
       <Row>
         <Col>
           <Container>{textFields}</Container>
         </Col>
       </Row>
     </Form>
-  );
+  )
 }
 
-export default TaskEditForm;
+export default NoteEditeForm

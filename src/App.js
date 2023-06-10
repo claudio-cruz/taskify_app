@@ -11,6 +11,7 @@ import TaskCreateForm from './pages/tasks/TaskCreateForm';
 import TaskEditForm from './pages/tasks/TaskEditForm';
 import NoteList from './pages/notes/Notes'
 import NoteCreateForm from './pages/notes/NoteCreateForm'
+import NoteEditForm from './pages/notes/NoteEditForm';
 import ProfileEditForm from './pages/profiles/ProfileEditForm'
 import HomePage from './pages/HomePage.js';
 
@@ -30,6 +31,7 @@ function App() {
           <Route exact path="/habits" render={() => <h1>Habits</h1>} />
           <Route exact path="/notes" render={() => <NoteList/>} />
           <Route exact path="/notes/create" render={() => <NoteCreateForm/>}/>
+          <Route exact path="/notes/:id/edit" render={() => <NoteEditForm/>}/>
           <Route exact path="/profiles/:id" render={() => <UserProfile/>} />
           <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
