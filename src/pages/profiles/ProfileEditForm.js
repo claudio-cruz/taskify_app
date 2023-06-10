@@ -25,14 +25,13 @@ function ProfileEditForm() {
     const history = useHistory();
     const imageFile = useRef();
 
-
     const [profilesData, setProfilesData] = useState({
-        name: "",
+        user: "",
         email: "",
         bio: "",
         image: "",
     });
-    const { name, email, bio, image } = profilesData;
+    const { user, email, bio, image } = profilesData;
 
     const [errors, setErrors] = useState({});
 
@@ -40,12 +39,12 @@ function ProfileEditForm() {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`/profiles/${id}/`);
-                const { name, email, bio, image } = response.data;
+                const { user, email, bio, image } = response.data;
 
                 if (currentUser) {
                     setProfilesData((prevProfilesData) => ({
                         ...prevProfilesData,
-                        name,
+                        user,
                         email,
                         bio,
                         image,
@@ -61,19 +60,18 @@ function ProfileEditForm() {
     }, [history, currentUser, id]);
 
     const handleChange = (event) => {
-        setProfilesData((prevProfilesData) => ({
-          ...prevProfilesData,
-          [event.target.name]: event.target.value,
+        setProfilesData((profilesData) => ({
+            ...profilesData,
+            [event.target.name]: event.target.value,
         }));
-      };
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
-        formData.append("name", name);
+        formData.append("user", user);
         formData.append("email", email);
         formData.append("bio", bio);
-
 
         if (imageFile?.current?.files[0]) {
             formData.append("image", imageFile?.current?.files[0]);
@@ -84,6 +82,9 @@ function ProfileEditForm() {
             setCurrentUser((currentUser) => ({
                 ...currentUser,
                 profile_image: data.image,
+                user: data.user,
+                email: data.email,
+                bio: data.bio,
             }));
             history.goBack();
         } catch (err) {
@@ -97,9 +98,9 @@ function ProfileEditForm() {
                 <Form.Label>User Name:</Form.Label>
                 <Form.Control
                     as="textarea"
-                    value={name}
+                    value={user}
                     onChange={handleChange}
-                    name="name"
+                    name="user"
                 />
             </Form.Group>
 
@@ -187,4 +188,4 @@ function ProfileEditForm() {
     )
 }
 
-export default ProfileEditForm
+export default ProfileEditForm;

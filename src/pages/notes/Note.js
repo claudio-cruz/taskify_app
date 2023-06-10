@@ -12,7 +12,6 @@ function Note(props) {
         created_at,
         priority,
         category,
-        //onUpdateComplete,
     } = props;
 
     const [deleted, setDeleted] = useState(false);
@@ -32,7 +31,7 @@ function Note(props) {
             await axiosRes.delete(`/notes/${id}/`);
             setDeleted(true);
         } catch (err) {
-            // Handle error
+            
         }
     };
 
