@@ -18,6 +18,7 @@ const NavBar = () => {
     const [expanded, setExpanded] = useState(false)
     const ref = useRef(null)
     
+    // Close the navbar dropdown when clicking outside of it
     useEffect(() => {
         const handleClickOutside = (event) => {
           if (ref.current && !ref.current.contains(event.target)) {
@@ -49,20 +50,7 @@ const NavBar = () => {
             >
                 <i className="fa-solid fa-square-check"></i> Tasks
             </NavLink>
-            <NavLink
-                to="/events"
-                className={styles.NavLink}
-                activeClassName={styles.Active}
-            >
-                <i className="fa-solid fa-calendar-days"></i> Events
-            </NavLink>
-            <NavLink
-                to="/habits"
-                className={styles.NavLink}
-                activeClassName={styles.Active}
-            >
-                <i className="fa-solid fa-repeat"></i> Habits
-            </NavLink>
+            
             <NavLink
                 to="/notes"
                 className={styles.NavLink}

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useHistory } from "react-router";
 
+// Custom hook to handle redirect based on user authentication status
 export const useRedirect = (userAuthStatus) => {
   const history = useHistory();
 

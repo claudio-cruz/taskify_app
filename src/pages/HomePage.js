@@ -1,9 +1,7 @@
 import React from 'react'
 
 import tasksImage from '../assets/tasksImage.png'
-import eventImage from '../assets/eventsImage.png'
 import notesImage from '../assets/notesImage.png'
-import habitsImage from '../assets/habitsImage.png'
 import logo from '../assets/logo.png'
 
 import { Col, Container, Row } from 'react-bootstrap'
@@ -30,7 +28,7 @@ function HomePage() {
               life and make the most out of every day. Whether you're a busy
               professional, a student, or simply someone seeking better
               organization, our task app is here to assist you in managing your
-              daily tasks, events, habits, and notebooks—all in one place.
+              daily tasks, and notebooks—all in one place.
             </p>
             <p>
               Our mission is to provide you with a seamless and intuitive platform
@@ -43,11 +41,13 @@ function HomePage() {
           </div>
         </Row>
 
-
+        {/* Render different content based on the user's authentication status */}
         {currentUser ? (
+          
           <Container>
             <Row className={Styles.Rows}>
 
+              {/* Link to the Tasks page */}
               <Col>
                 <Link to="/tasks">
                   <h3>Tasks</h3>
@@ -55,18 +55,7 @@ function HomePage() {
                 </Link>
               </Col>
 
-              <Col>
-                <Link to="/events">
-                  <h3>Events</h3>
-                  <img src={eventImage} height="80" alt="Events logo" />
-                </Link>
-              </Col>
-              <Col>
-                <Link to="/habits">
-                  <h3>Habits</h3>
-                  <img src={habitsImage} height="80" alt="Habits logo" />
-                </Link>
-              </Col>
+              {/* Link to the Notes page */}
               <Col>
                 <Link to="/notes">
                   <h3>Notes</h3>
@@ -75,21 +64,21 @@ function HomePage() {
               </Col>
             </Row>
           </Container>
+
         ) : (
+
           <Container className="text-center">
+            {/* Button to navigate to the Sign In page */}
             <button className={Buttons.button}>
-              <NavLink
-                to="/signin"
-               
-              >
+              <NavLink to="/signin">
                 <i className="fa-solid fa-right-to-bracket"></i> Sign in
               </NavLink>
             </button>
+
+            {/* Button to navigate to the Sign Up page */}
             <button className={Buttons.button}>
               <NavLink
-                to="/signup"
-                
-              >
+                to="/signup">
                 <i className="fa-solid fa-user-plus"></i> Sign up
               </NavLink>
             </button>

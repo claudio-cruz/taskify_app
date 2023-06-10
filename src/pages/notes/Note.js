@@ -31,7 +31,6 @@ function Note(props) {
             await axiosRes.delete(`/notes/${id}/`);
             setDeleted(true);
         } catch (err) {
-            
         }
     };
 

@@ -21,7 +21,6 @@ const Task = (props) => {
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   const [taskCompleteAlert, setTaskCompleteAlert] = useState(false);
-  const [taskDeleteAlert, setTaskDeleteAlert] = useState(false);
 
   const handleEdit = () => {
     history.push(`/tasks/${id}/edit`);
@@ -35,11 +34,7 @@ const Task = (props) => {
     try {
       await axiosRes.delete(`/tasks/${id}/`);
       setDeleted(true);
-      setTaskDeleteAlert(true); // Display success alert
-      setTimeout(() => {
-        setTaskDeleteAlert(false); // Reset success status after some time
-        history.push(`/tasks/`);
-      }, 2000);
+      history.push(`/tasks/`);
     } catch (err) {
       // Handle error
     }
@@ -82,17 +77,6 @@ const Task = (props) => {
       >
         Task toggled!
       </Alert>
-
-      <Alert
-        className={StyleAlerts.AlertMessage}
-        variant="success"
-        show={taskDeleteAlert}
-        onClose={() => setTaskDeleteAlert(false)}
-        dismissible
-      >
-        Task deleted successfully!
-      </Alert>
-
 
       <Row>
         <Col xs={9} md={10}>

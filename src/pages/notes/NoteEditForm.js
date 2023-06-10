@@ -20,6 +20,7 @@ function NoteEditeForm() {
   const { id } = useParams();
 
   useEffect(() => {
+    // Fetch note data from the server when the component mounts
     const fetchData = async () => {
       try {
         const response = await axios.get(`/notes/${id}/`);
@@ -35,6 +36,7 @@ function NoteEditeForm() {
             category,
           }));
         } else {
+          // If user is not the owner, redirect to home page
           history.push('/');
         }
       } catch (error) {
@@ -46,6 +48,7 @@ function NoteEditeForm() {
   }, [history, id]);
 
   const handleChange = (event) => {
+    // Update the noteData state based on input field changes
     setNoteData((prevNoteData) => ({
       ...prevNoteData,
       [event.target.name]: event.target.value,

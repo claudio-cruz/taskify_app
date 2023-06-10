@@ -45,10 +45,11 @@ function NoteCreateForm() {
 
         try {
             const currentTime = new Date();
-      setNoteData({
-        ...noteData,
-        created_at: currentTime,
-      });
+            // Update the noteData state based on input field changes
+            setNoteData({
+                ...noteData,
+                created_at: currentTime,
+            });
 
             await axiosReq.post("/notes/", formData);
             setNoteCreateAlert(true);
@@ -137,7 +138,7 @@ function NoteCreateForm() {
         <Form onSubmit={handleSubmit}>
             <h3 className="text-center">Create a note</h3>
             {/* Display the alert message if success is true */}
-            {noteCreateAlert && ( 
+            {noteCreateAlert && (
                 <Alert
                     className={StyleAlerts.AlertMessage}
                     variant="success"
