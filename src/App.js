@@ -28,7 +28,7 @@ function App() {
           <Route exact path="/tasks/create" render={() => <TaskCreateForm/>} />
           <Route exact path="/tasks/:id/edit" render={() => <TaskEditForm />} />
           <Route exact path="/events" render={() => <h1>Events</h1>} />
-          <Route exact path="/habits" render={() => <h1>Habits</h1>} />
+          <Route exact path="/habits" render={() => <HabitsList/>} />
           <Route exact path="/notes" render={() => <NoteList/>} />
           <Route exact path="/notes/create" render={() => <NoteCreateForm/>}/>
           <Route exact path="/notes/:id/edit" render={() => <NoteEditForm/>}/>
