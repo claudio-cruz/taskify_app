@@ -11,7 +11,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import { Button, Row, Col, Spinner, Tab, Nav } from 'react-bootstrap';
 
-function HabitList({ filter = "" }) {
+function HabitsList({ filter = "" }) {
   const [habits, setHabits] = useState({ results: [], next: null });
   const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -191,4 +191,4 @@ function HabitList({ filter = "" }) {
   );
 }
 
-export default HabitList
+export default HabitsList

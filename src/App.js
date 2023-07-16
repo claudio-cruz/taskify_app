@@ -14,6 +14,7 @@ import NoteCreateForm from './pages/notes/NoteCreateForm'
 import NoteEditForm from './pages/notes/NoteEditForm';
 import ProfileEditForm from './pages/profiles/ProfileEditForm'
 import HomePage from './pages/HomePage.js';
+import HabitsList from './pages/habits/Habits';
 
 
 function App() {

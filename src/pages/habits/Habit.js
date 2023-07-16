@@ -4,12 +4,12 @@ import Styles from '../../styles/Note.module.css';
 import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 
-function Note(props) {
+function Habit(props) {
   const {
     id,
     title,
-    content,
-    created_at,
+    description,
+    frequency,
     priority,
     category,
   } = props;
@@ -19,7 +19,7 @@ function Note(props) {
   const [showModal, setShowModal] = useState(false);
 
   const handleEdit = () => {
-    history.push(`/notes/${id}/edit`);
+    history.push(`/habits/${id}/edit`);
   };
 
   const handleDelete = async () => {
@@ -28,8 +28,9 @@ function Note(props) {
 
   const confirmDelete = async () => {
     try {
-      await axiosRes.delete(`/notes/${id}/`);
+      await axiosRes.delete(`/habits/${id}/`);
       setDeleted(true);
+      history.push(`/habits/`);
     } catch (err) {
     }
   };
@@ -60,15 +61,15 @@ function Note(props) {
           </Dropdown>
         </Col>
       </Row>
-      {content && (
+      {description && (
         <Row>
           <Col>
-            <p>{content}</p>
+            <p>{description}</p>
           </Col>
         </Row>
       )}
       <Row>
-        <Col xs={5}><p>{created_at}</p></Col>
+        <Col xs={5}><p>{frequency}</p></Col>
         <Col><p>{category}</p></Col>
         <Col xs={3}><p>{priority}</p></Col>
       </Row>
@@ -78,7 +79,7 @@ function Note(props) {
         <Modal.Header closeButton>
           <Modal.Title>Confirm Delete</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to delete this note?</Modal.Body>
+        <Modal.Body>Are you sure you want to delete this habit?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
             Cancel
@@ -89,7 +90,7 @@ function Note(props) {
         </Modal.Footer>
       </Modal>
     </Container >
-  )
-}
+  );
+};
 
-export default Note
+export default Habit
