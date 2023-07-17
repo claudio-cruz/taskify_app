@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Dropdown, Modal, Button } from 'react-bootstrap';
-import Styles from '../../styles/Note.module.css';
+import Styles from '../../styles/Habit.module.css';
 import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 
@@ -40,7 +40,7 @@ function Habit(props) {
   }
 
   return (
-    <Container className={Styles.NoteContainer}>
+    <Container className={Styles.HabitContainer}>
 
       <Row>
         <Col xs={10} md={11}>
