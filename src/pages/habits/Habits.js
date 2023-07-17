@@ -11,7 +11,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import { Button, Row, Col, Spinner, Tab, Nav } from 'react-bootstrap';
 
-function HabitsList({ filter = "" }) {
+function HabitList({ filter = "" }) {
   const [habits, setHabits] = useState({ results: [], next: null });
   const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -170,7 +170,7 @@ function HabitsList({ filter = "" }) {
         </Tab.Content>
       </Tab.Container>
 
-      {/* Add Habits button */}
+      {/* Add Habit button */}
       <Container>
         <Row className="justify-content-end">
           <Col xs="auto">
@@ -191,4 +191,4 @@ function HabitsList({ filter = "" }) {
   );
 }
 
-export default HabitsList
+export default HabitList

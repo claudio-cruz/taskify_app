@@ -30,7 +30,6 @@ function Habit(props) {
     try {
       await axiosRes.delete(`/habits/${id}/`);
       setDeleted(true);
-      history.push(`/habits/`);
     } catch (err) {
     }
   };
