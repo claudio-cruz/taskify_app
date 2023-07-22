@@ -17,7 +17,7 @@ import HomePage from './pages/HomePage.js';
 import HabitList from './pages/habits/Habits';
 import HabitCreateForm from './pages/habits/HabitCreateForm';
 import HabitEditForm from './pages/habits/HabitEditForm';
-
+import EventList from './pages/events/Events.js';
 
 function App() {
   
@@ -30,7 +30,7 @@ function App() {
           <Route exact path="/tasks" render={() => <TaskList/>} />
           <Route exact path="/tasks/create" render={() => <TaskCreateForm/>} />
           <Route exact path="/tasks/:id/edit" render={() => <TaskEditForm />} />
-          <Route exact path="/events" render={() => <h1>Events</h1>} />
+          <Route exact path="/events" render={() => <EventList/>} />
           <Route exact path="/habits" render={() => <HabitList/>} />
           <Route exact path="/habits/create" render={() => <HabitCreateForm/>}/>
           <Route exact path="/habits/:id/edit" render={() => <HabitEditForm/>}/>

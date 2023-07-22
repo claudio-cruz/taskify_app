@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchMoreData } from "../../utils/utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosReq } from "../../api/axiosDefaults";
-import Note from "./Note"
+import Event from "./Event"
 import { Link } from "react-router-dom";
 import styles from "../../styles/NavBar.module.css";
 import { useLocation } from "react-router";
@@ -11,18 +11,18 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import { Button, Row, Col, Spinner, Tab, Nav } from 'react-bootstrap';
 
-function NoteList({ filter = "" }) {
-  const [notes, setNotes] = useState({ results: [], next: null });
+function EventList({ filter = "" }) {
+  const [events, setEvents] = useState({ results: [], next: null });
   const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    const fetchNotes = async () => {
+    const fetchEvents = async () => {
       try {
-        const { data } = await axiosReq.get(`/notes/?${filter}search=${query}`);
-        setNotes(data);
+        const { data } = await axiosReq.get(`/events/?${filter}search=${query}`);
+        setEvents(data);
         setHasLoaded(true);
       } catch (err) {
         // Handle error
@@ -31,7 +31,7 @@ function NoteList({ filter = "" }) {
 
     setHasLoaded(false);
     const timer = setTimeout(() => {
-      fetchNotes();
+      fetchEvents();
     }, 1000);
 
     return () => {
@@ -49,7 +49,7 @@ function NoteList({ filter = "" }) {
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               type="text"
-              placeholder="Search notes"
+              placeholder="Search events"
             />
             <div className="input-group-append">
               <span className="input-group-text">
@@ -60,8 +60,8 @@ function NoteList({ filter = "" }) {
         </Form>
       </div>
 
-      {/* Tab to filter the Note list */}
-      <Tab.Container id="note-filters" defaultActiveKey="all">
+      {/* Tab to filter the Event list */}
+      <Tab.Container id="event-filters" defaultActiveKey="all">
         <Nav variant="tabs" className="justify-content-center mb-3">
           <Nav.Item>
             <Nav.Link eventKey="all" className={styles.TabNavLink}>All</Nav.Link>
@@ -80,16 +80,16 @@ function NoteList({ filter = "" }) {
           <Tab.Pane eventKey="all">
             {hasLoaded ? (
               <>
-                {notes.results.length ? (
+                {events.results.length ? (
                   <InfiniteScroll
-                    children={notes.results.map((note) => (
-                      <Note key={note.id} {...note} setNotes={setNotes} />
+                    children={events.results.map((event) => (
+                      <Event key={event.id} {...event} setEvents={setEvents} />
                     ))}
-                    dataLength={notes.results.length}
+                    dataLength={events.results.length}
                     loader={<Spinner animation="border" variant="dark" />}
-                    hasMore={!!notes.next}
-                    next={() => fetchMoreData(notes, setNotes)}
-                    endMessage={<p>No more notes.</p>}
+                    hasMore={!!events.next}
+                    next={() => fetchMoreData(events, setEvents)}
+                    endMessage={<p>No more events.</p>}
                   />
                 ) : (
                   <Container>
@@ -106,12 +106,12 @@ function NoteList({ filter = "" }) {
           <Tab.Pane eventKey="high">
             {hasLoaded ? (
               <>
-                {notes.results
-                  .filter((note) => note.priority === "high")
-                  .map((note) => (
-                    <Note key={note.id} {...note} setNotes={setNotes} />
+                {events.results
+                  .filter((event) => event.priority === "high")
+                  .map((event) => (
+                    <Event key={event.id} {...event} setEvents={setEvents} />
                   ))}
-                {!notes.results.some((note) => note.priority === "high") && (
+                {!events.results.some((event) => event.priority === "high") && (
                   <Container>
                     <p>No results</p>
                   </Container>
@@ -126,12 +126,12 @@ function NoteList({ filter = "" }) {
           <Tab.Pane eventKey="medium">
             {hasLoaded ? (
               <>
-                {notes.results
-                  .filter((note) => note.priority === "medium")
-                  .map((note) => (
-                    <Note key={note.id} {...note} setNotes={setNotes} />
+                {events.results
+                  .filter((event) => event.priority === "medium")
+                  .map((event) => (
+                    <Event key={event.id} {...event} setEvents={setEvents} />
                   ))}
-                {!notes.results.some((note) => note.priority === "medium") && (
+                {!events.results.some((event) => event.priority === "medium") && (
                   <Container>
                     <p>No results</p>
                   </Container>
@@ -146,12 +146,12 @@ function NoteList({ filter = "" }) {
           <Tab.Pane eventKey="low">
             {hasLoaded ? (
               <>
-                {notes.results
-                  .filter((note) => note.priority === "low")
-                  .map((note) => (
-                    <Note key={note.id} {...note} setNotes={setNotes} />
+                {events.results
+                  .filter((event) => event.priority === "low")
+                  .map((event) => (
+                    <Event key={event.id} {...event} setEvents={setEvents} />
                   ))}
-                {!notes.results.some((note) => note.priority === "low") && (
+                {!events.results.some((event) => event.priority === "low") && (
                   <Container>
                     <p>No results</p>
                   </Container>
@@ -166,17 +166,17 @@ function NoteList({ filter = "" }) {
         </Tab.Content>
       </Tab.Container>
 
-      {/* Add Note button */}
+      {/* Add Event button */}
       <Container>
         <Row className="justify-content-end">
           <Col xs="auto">
             <Button variant="link">
               <Link
-                to="/notes/create"
+                to="/events/create"
                 className={styles.NavLink}
                 activeclassname={styles.Active}
               >
-                <i className="fa-solid fa-plus"></i> Add Note
+                <i className="fa-solid fa-plus"></i> Add Event
               </Link>
             </Button>
           </Col>
@@ -184,8 +184,7 @@ function NoteList({ filter = "" }) {
       </Container>
 
     </Container>
-
   )
 }
 
-export default NoteList
+export default EventList

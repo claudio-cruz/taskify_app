@@ -66,6 +66,14 @@ const NavBar = () => {
         <i className="fa-solid fa-repeat"></i> Habits
       </NavLink>
 
+      <NavLink
+        to="/events"
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
+        <i className="fa-regular fa-calendar-days"></i> Events
+      </NavLink>
+
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fa-solid fa-right-from-bracket"></i> Sign out
       </NavLink>
