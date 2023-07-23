@@ -2,6 +2,8 @@ import React from 'react'
 
 import tasksImage from '../assets/tasksImage.png'
 import notesImage from '../assets/notesImage.png'
+import eventImage from '../assets/eventsImage.png'
+import habitsImage from '../assets/habitsImage.png'
 import logo from '../assets/logo.png'
 
 import { Col, Container, Row } from 'react-bootstrap'
@@ -43,11 +45,10 @@ function HomePage() {
 
         {/* Render different content based on the user's authentication status */}
         {currentUser ? (
-          
+
           <Container>
             <Row className={Styles.Rows}>
 
-              {/* Link to the Tasks page */}
               <Col>
                 <Link to="/tasks">
                   <h3>Tasks</h3>
@@ -55,7 +56,18 @@ function HomePage() {
                 </Link>
               </Col>
 
-              {/* Link to the Notes page */}
+              <Col>
+                <Link to="/events">
+                  <h3>Events</h3>
+                  <img src={eventImage} height="80" alt="Events logo" />
+                </Link>
+              </Col>
+              <Col>
+                <Link to="/habits">
+                  <h3>Habits</h3>
+                  <img src={habitsImage} height="80" alt="Habits logo" />
+                </Link>
+              </Col>
               <Col>
                 <Link to="/notes">
                   <h3>Notes</h3>
