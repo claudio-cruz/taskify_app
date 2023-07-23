@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Form, Button, Row, Col, Container, Alert } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-
 import styles from '../../styles/Buttons.module.css';
 
 function TaskEditForm() {
@@ -25,7 +24,14 @@ function TaskEditForm() {
     const fetchData = async () => {
       try {
         const response = await axios.get(`/tasks/${id}/`);
-        const { task, due_date, description, priority, category, is_owner } = response.data;
+        const {
+          task,
+          due_date,
+          description,
+          priority,
+          category,
+          is_owner
+        } = response.data;
 
         if (is_owner) {
           const parsedDueDate = due_date ? new Date(due_date) : null;
