@@ -343,10 +343,40 @@ The main technologies used are the following:
 7. React: In building user interfaces, I prefer using React, a powerful JavaScript library that allows me to create dynamic, reusable, and responsive web applications efficiently.
 8. Bootstrap: For a responsive and consistent layout and design, I turn to Bootstrap, reducing the CSS code and unnecessary extra css files.
 
-
 ---
 ## Testing
 
+
+### *Back-End manual testing*
+
+1. Profiles data:
+- [x] Upon completion of the sign-up form, a new user's account is successfully generated in the database, incorporating all the accurate inputs provided.
+- [x] Upon editing the user profile, the modified inputs are accurately displayed in the database.
+- [x] When an admin deletes a user profile, it is effectively eliminated from the database, thereby rendering it impossible to log in using the associated username and password.
+
+2. Task data:
+- [x] Upon creating a new task, the user's inputs are successfully saved, except for the time, which consistently defaults to 00:00.
+- [x] When editing a task, the changes made to the inputs are accurately updated in the database.
+- [x] When the task is deleted, it is accurately removed from the database.
+- [x] The task meta class effectively arranges tasks in the task list based on their due_date and priority values.
+
+3. Note data:
+- [x] Upon creating a new note, the user's inputs are successfully saved in the database.
+- [x] When editing a note, the changes made to the inputs are accurately updated in the database.
+- [x] When the note is deleted, it is accurately removed from the database.
+- [x] The note meta class effectively arranges notes in the note list based on their created_at.
+
+4. Habit data:
+- [x] Upon creating a new habit, the user's inputs are successfully saved in the database.
+- [x] When editing a habit, the changes made to the inputs are accurately updated in the database.
+- [x] When the habit is deleted, it is accurately removed from the database.
+- [x] The habit meta class effectively arranges habits in the habit list based on their priority.
+
+5. Event data:
+- [x] Upon creating a new event, the user's inputs are successfully saved in the database.
+- [x] When editing a event, the changes made to the inputs are accurately updated in the database.
+- [x] When the event is deleted, it is accurately removed from the database.
+- [x] The event meta class effectively arranges events in the event list based on their start_time and priority.
 
 ### *Front-End manual testing*
 
@@ -361,13 +391,11 @@ The main technologies used are the following:
 - [x] The profile link shows correctly, with the user name and the user image displayed.
 - [x] The navbar is responsive to all screen devices and displays a drop-down menu with all links.
 
-
 2. Home Page:
 - [x] The home page displays correctly.
 - [x] When the user is authenticated, display two links, one to the task list and the other to the note list. Both links work.
 - [x] When the user is first authenticated, two links to sign in or sign up appear. Both links work correctly.
 - [x] The home page is responsive to all screen views.
-
 
 3. Tasks:
 - [x] The task list displays all the tasks correctly on all screen sizes.
@@ -377,17 +405,17 @@ The main technologies used are the following:
 - [x] The dropdown menu with the links to delete, create, and edit tasks works.
 - [x] The spinner works.
 - [x] The modal delete confirmation works.
+- [x] If users click "cancel" in the delete confirmation modal, the modal will close, and the task will remain undeleted.
+- [x] The task is successfully deleted when the confirm button is clicked in the delete confirmation modal.
 - [x] The task list is fully responsive to all screen sizes
-
 
 4. Task edit and create forms:
 - [x] The alerts for empty inputs work.
 - [x] The successful alert for creating and editing the task works.
 - [x] The input options work.
 - [x] The tasks are created and edited correctly.
-- [x] The cancel button returns the user to the previous page correctly.
+- [x] The cancel button, in the edit and create form, returns the user to the previous page correctly.
 - [x] The forms are fully responsive to all screen sizes.
-
 
 5. Notes:
 - [x] The note list displays all the notes correctly at all screen sizes.
@@ -397,44 +425,115 @@ The main technologies used are the following:
 - [x] The dropdown menu with the links to delete, create, and edit notes works.
 - [x] The spinner works.
 - [x] The modal delete confirmation works.
+- [x] If users click "cancel" in the delete confirmation modal, the modal will close, and the note will remain undeleted.
+- [x] The note is successfully deleted when the confirm button is clicked in the delete confirmation modal.
 - [x] The note list is fully responsive to all screen sizes.
 
-
-5. Note edit and create forms:
+6. Note edit and create forms:
 - [x] The alerts for empty inputs work.
 - [x] The successful alert for creating and editing the notes works.
 - [x] The input options work.
 - [x] The notes are created and edited correctly.
-- [x] The cancel button returns the user to the previous page correctly.
+- [x] The cancel button, in the edit and create form, returns the user to the previous page correctly.
 - [x] The forms are fully responsive to all screen sizes.
 
+7. Habits:
+- [x] The habit list displays all the habits correctly at all screen sizes.
+- [x] The search bar works.
+- [x] The habit filter works correctly.
+- [x] Habits display all the information correctly.
+- [x] The dropdown menu with the links to delete and edit habits work.
+- [x] The spinner works.
+- [x] The modal delete confirmation works.
+- [x] If users click "cancel" in the delete confirmation modal, the modal will close, and the habit will remain undeleted.
+- [x] The habit is successfully deleted when the confirm button is clicked in the delete confirmation modal.
+- [x] The habit list is fully responsive to all screen sizes.
 
-6. Sign in form:
+8. Habit edit and create forms:
+- [x] The alerts for empty inputs work.
+- [x] The successful alert for creating and editing the habits work.
+- [x] The input options work.
+- [x] The habits are created and edited correctly.
+- [x] The cancel button, in the edit and create form, returns the user to the previous page correctly.
+- [x] The forms are fully responsive to all screen sizes.
+
+9. Events:
+- [x] The event list displays all the events correctly at all screen sizes.
+- [x] The search bar works.
+- [x] The event filter works correctly.
+- [x] Events display all the information correctly.
+- [x] The dropdown menu with the links to delete and edit events work.
+- [x] The spinner works.
+- [x] The modal delete confirmation works.
+- [x] If users click "cancel" in the delete confirmation modal, the modal will close, and the event will remain undeleted.
+- [x] The event is successfully deleted when the confirm button is clicked in the delete confirmation modal.
+- [x] The event list is fully responsive to all screen sizes.
+
+10. Event edit and create forms:
+- [x] The alerts for empty inputs work.
+- [x] The successful alert for creating and editing the events work.
+- [x] The input options work.
+- [x] The events are created and edited correctly.
+- [x] The cancel button, in the edit and create form, returns the user to the previous page correctly.
+- [x] The forms are fully responsive to all screen sizes.
+
+11. Sign in form:
 - [x] The alerts if the inputs are incorrect are displayed correctly.
 - [x] When the user successfully logs in, the alert message works, and the sign-in submission works.
 - [x] The link to sign up works.
 - [x] The forms are fully responsive to all screen sizes.
 
-
-7. Sign up form:
+12. Sign up form:
 - [x] The alerts if the inputs are incorrect are displayed correctly.
 - [x] When the user successfully signs up, the alert message works, and the sign-up submission works.
 - [x] The link to sign in works.
 - [x] The form are fully responsive to all screen sizes.
 
-
-8. Log out:
+13. Log out:
 - [x] The log out works correctly
 
-
-9. Profile page and edit form
-- [ ] The user image, name, and email display correctly, but the bio only displays correctly after being edited.
+14. Profile page and edit form
+- [x] The user image, name, and email display correctly, however the bio only displays correctly after being edited.
 - [x] The edit link redirects correctly to the profile edit form.
 - [x] The current user information is displayed correctly in the edit form.
-- [ ] All the inputs can be correctly updated, apart from the user name.
+- [x] All the inputs can be correctly updated, apart from the user name.
 - [x] The submission works correctly.
 - [x] The cancel button correctly redirects the user back to the profile page.
 - [x] The form are fully responsive to all screen sizes.
+
+### *Deployment*
+
+#### Back-End
+
+1. Create a new instance on elephantsql.com.
+2. Create a new Heroku app.
+3. On the Heroku app settings tab, add a config var "DATABASE_URL", and for the value, I copied the database URL from ElephantSQL without the quotation marks.
+4. In the terminal, I installed dj_database_url and psycopg2 "pip3 install dj_database_url==0.5.0 psycopg2".
+5. In the settings.py I imported dj_database_url underneath the import for os.
+6. In the settings.py I updated the DATABASES section to the following:
+![Settings update](/src/assets/settingsUpdate.png)
+7. In env.py I set a new environment variable with the key set to DATABASE_URL, and the value to my ElephantSQL database URL.
+8. I Migrate my database models to the new database using "python3 manage.py migrate".
+9. I Create a superuser for the new database "python3 manage.py createsuperuser".
+10. On the ElephantSQL page for the database, in the left-side navigation, I selected "BROWSER", clicked the "Table queries" button, selected "auth_user", and clicked "Execute". This confirms that the tables have been created and that data can be added to the database.
+11. I installed gunicorn with "pip3 install gunicorn django-cors-headers".
+12. I updated my requirements.txt "pip freeze --local > requirements.txt".
+13. I created a "Procfile" and added to it the following two commands: "release: python manage.py makemigrations and python manage.py migrate web: gunicorn drf_api.wsgi".
+14. In the settings.py file, I updated the value of the ALLOWED_HOSTS variable to include the Heroku app’s URL "ALLOWED_HOSTS = ['localhost', '<your_app_name>.herokuapp.com']".
+15. I Added corsheaders to INSTALLED_APPS.
+16. I Added corsheaders middleware to the TOP of the MIDDLEWARE.
+17. Under the MIDDLEWARE list, I set the ALLOWED_ORIGINS for the network requests made to the server with the following code:
+![Allowed origins](/src/assets/allowedOrigins.png)
+18. To be able to have the front-end app and the API deployed to different platforms, I set the JWT_AUTH_SAMESITE attribute to 'None'. Without this, the cookies would be blocked.
+![JWT](/src/assets/JWT.png)
+19. I Removed the value for SECRET_KEY and replaced it with the following code to use an environment variable instead: "SECRET_KEY = os.getenv('SECRET_KEY')".
+20. Set a NEW value for your SECRET_KEY environment variable in env.py: "os.environ.setdefault("SECRET_KEY", "CreateANEWRandomValueHere")".
+21. Set the DEBUG value to be True only if the DEV environment variable exists. This means it is True in development and False in production: "DEBUG = 'DEV' in os.environ".
+22. I Ensured the project requirements.txt file was up-to-date. In the IDE terminal of the DRF API project, I entered the following: "pip freeze --local > requirements.txt".
+23. I Added, committed, and pushed the code to GitHub.
+24. In the Heroku dashboard for the new app, I opened the Settings tab and added two more Config Vars: "SECRET_KEY" and "CLOUDINARY_URL, and for the value, I copied in the Cloudinary URL from the env.py file without the quotation marks".
+25. I opened the deployment tab, selected "GitHub" in the Deployment method, I searched for my repo and clicked Connect.
+26. Down on the same page, I clicked "Deploy Branch" in the Manual Deploy section, and the Back-End was finally deployed.
 
 
 ### *Lighthouse*
