@@ -3,31 +3,23 @@
 
 [Visit the website here](https://taskify-app-2023.herokuapp.com/)
 
-
 ![screen views](/src/assets/screenViews.png)
-
 
 Welcome to Taskify, the ultimate task management app designed to help you stay organized and in control of your professional and personal life. With Taskify, you can create, delete, edit, and view tasks, events, habits and notes effortlessly, ensuring that you never miss out on anything important again.
 
-
 Our goal is simple: to provide a comprehensive and intuitive platform that streamlines your daily tasks and enhances your productivity. We understand the challenges of modern life, where commitments and responsibilities can easily pile up, leading to stress and missed opportunities. Taskify aims to be your trusted companion, helping you navigate through the chaos and maintain a clear focus on what matters most.
-
 
 Our vision for Taskify is to empower individuals like you to lead more balanced, fulfilling lives by seamlessly managing tasks, events, habits and notes. By harnessing the power of technology, we aim to simplify your day-to-day routines, freeing up your time and mental energy for the things that truly matter to you.
 
-
 All the Agile processes, the user stories and the sprints can be found in the project section on GitHub. (It's set to public).
 
-
 [See user stories](https://github.com/users/claudio-cruz/projects/10/views/1)
-
 
 [See sprints](https://github.com/claudio-cruz/taskify_app/milestones)
 
 
-
-
 #### This website is made up of the following sections:
+
 1. Home Page: contains the goals of the app and a link to sign in and sign up if the user is logged out, or a link to the task list and note list if the user is logged in.
 2. Sign-in page: where users can log in.
 3. Sign-up page: where users can create an account.
@@ -48,6 +40,7 @@ All the Agile processes, the user stories and the sprints can be found in the pr
 
 
 #### User goals:
+
 1. Task Management:
 * Add, edit, and delete tasks with due dates and priorities.
 * Organize tasks into categories or projects for better clarity.
@@ -71,6 +64,7 @@ All the Agile processes, the user stories and the sprints can be found in the pr
 
 
 #### Business goals:
+
 1. Our objective is to develop a top-notch app that effectively attracts a wide range of task app users by providing exceptional service.
 2. We aim to generate revenue through various channels such as premium subscriptions, in-app purchases, or targeted advertisements, ensuring the app's sustainability and future growth.
 
@@ -81,9 +75,7 @@ All the Agile processes, the user stories and the sprints can be found in the pr
 
 ### **Strategy**
 
-
 With the UX in mind, I started to think about who the target users would be and how this website would help them reach their goals.
-
 
 DevBooks target users are:
 * Aged 12-70
@@ -91,13 +83,11 @@ DevBooks target users are:
 * Students at different education levels can benefit from a task app to keep track of assignments, deadlines, and study schedules.
 * Home and Family Managers: Individuals responsible for managing household tasks, family schedules, and personal commitments can use the app to stay organized and ensure nothing falls through the cracks.
 
-
 What these users would be looking for:
 * Track assignments, deadlines, and study schedules. Reminders, note attachments, subject categorization, and calendar integration.
 * Efficiently manage workload, prioritize tasks, set reminders, and track progress.
 * Collaboration tools and customizable categories are important.
 * Handle household chores, family schedules, and personal commitments.
-
 
 This website is still in development, and it has a lot to improve and grow.
 
@@ -116,7 +106,6 @@ To achieve the desired user and business goals, the upcoming release will includ
 * Sign up form: for users to sign up.
 
 
-
 ### **Structure**
 
 
@@ -130,6 +119,7 @@ For enhanced usability, each of these lists follows the same structure, ensuring
 
 
 ### Skeleton
+
 
 #### **Website scheme**
 ![Scheme](/src/assets/sitescheme.png)
@@ -176,11 +166,9 @@ Overall, with these components and hooks, I have streamlined the process of mana
 7. Sign Up: For users who are not logged in, the navbar provides a "Sign Up" link, leading them to the registration page where they can create a new account.
 8. Profile: The navbar offers a link to the user's profile page, providing personalized information and settings related to their account.
 
-
 Additionally, our responsive navbar ensures optimal usability on small screen views. When the screen size is reduced, a hamburger menu (hamburger icon) appears, indicating the presence of a hidden navigation menu. Clicking on the hamburger menu expands a drop-down menu displaying all the available links and functionalities.
 To enhance user convenience, regardless of their logged-in status, they can simply click on the logo within the navbar, which will always redirect them to the home page.
 With our fully responsive navbar, users can effortlessly navigate through various sections of our website, access essential features, and seamlessly manage their tasks, notes, habits, and events.
-
 
 ![NavBarsm](/src/assets/NavBarsm.png)
 
@@ -195,7 +183,6 @@ With our fully responsive navbar, users can effortlessly navigate through variou
 For logged-in users, the Home Page extends a warm welcome and offers easy access to the main features: the Task List, Note List, Habit List, and Event List. These powerful tools allow you to stay organized, track your tasks, events, habits, and manage your notes effortlessly. With just a click, you can dive into your tasks, notes, habits, and events, ensuring productivity and efficiency.
 
 In the case of logged-out users, our Home Page presents two enticing links: "Sign In" and "Sign Up." By clicking on "Sign In," you'll be directed to our login page, where you can access your existing account and resume your journey with us. If you're new to our platform, "Sign Up" will guide you to our registration page, enabling you to create an account and unlock a world of possibilities.
-
 
 ![Home page log in](/src/assets/homePageLogin.png)
 
@@ -306,18 +293,13 @@ Taskidy's intuitive interface and user-friendly dropdown menu options ensure tha
 
 Taskidy is designed to accommodate your organizational needs without any limitations on the number of tasks or notes you can create. We understand that productivity knows no bounds, so we've implemented features that ensure a seamless user experience:
 
-
 1. Unlimited task, note, habit or event: With Taskidy, you can create as many tasks, notes, habits or events as you need. There are no restrictions or predefined limits, allowing you to capture all your important tasks and jot down unlimited ideas and notes.
-
 
 2. Infinite Scroll: To ensure fast loading times and optimal performance, Taskidy utilizes an infinite scroll mechanism. Instead of loading the entire list of tasks, notes, habits or events at once, the app dynamically fetches and displays a portion of the list as you scroll down. This approach enhances the loading speed and prevents any lag or delay, even when dealing with a large number of tasks, notes, habits or events.
 
-
 3. Seamless User Experience: The combination of unlimited tasks,notes, habits, events and infinite scroll provides a seamless user experience. You can effortlessly navigate through your extensive task, note, habit or event collection without worrying about slow loading times or performance issues. The app ensures a fluid and responsive interface, allowing you to focus on your productivity without any distractions.
 
-
 With Taskidy's unlimited task, note, habit or event creation, coupled with the efficient infinite scroll, you have the freedom to capture and organize your thoughts, tasks, and ideas without constraints. Embrace the power of productivity and creativity with Taskidy, where your organizational capabilities are limitless and the app responds swiftly to your needs.
-
 
 ![Add task](/src/assets/addTask.png)
 ![Add note](/src/assets/addNote.png)
@@ -503,7 +485,7 @@ The main technologies used are the following:
 
 ### *Deployment*
 
-#### Back-End
+#### Back end deployment steps
 
 1. Create a new instance on elephantsql.com.
 2. Create a new Heroku app.
@@ -535,16 +517,21 @@ The main technologies used are the following:
 25. I opened the deployment tab, selected "GitHub" in the Deployment method, I searched for my repo and clicked Connect.
 26. Down on the same page, I clicked "Deploy Branch" in the Manual Deploy section, and the Back-End was finally deployed.
 
+#### Front end deployment steps
+
+1. Once I committed and pushed the latest change to the GitHub workspace, I proceeded to create a new app on Heroku.com.
+
+2. Within the "Deploy" section, I opted for GitHub as the deployment method, provided my front-end repository name, and clicked on "connect."
+
+3. Further down the same page, under "Deploy," I chose "Deploy Branch" in the Manual Deploy section.
+
 
 ### *Lighthouse*
 
 
 The lighthouse results are all above 90 percent percent.
 
-
 ![LightHouse](/src/assets/lightHouse.jpg)
-
-
 
 
 ### *HTML, CSS, and JavaScript Validation*
@@ -564,6 +551,7 @@ I encountered several issues during the project, which I was able to address wit
 3. Version Compatibility: There were incompatibilities between React, Bootstrap, and Node.js versions, requiring multiple restarts of the project.
 4. FindDOMNode Error: The usage of React.StrictMode caused a FindDOMNode error, which needed to be resolved.
 The tutors played a crucial role in resolving these issues and providing guidance throughout the development process. Their assistance was instrumental in overcoming these challenges and ensuring the successful completion of the project.
+5. iOS Error: I've observed an issue with the app on iOS devices. Users can create an account successfully; however, when they log in with the correct credentials, the app redirects them to the home page as if they are logged out, instead of being logged in. Unfortunately, I couldn't find a solution to this problem within the given time frame. It's worth mentioning that the app works fine on Android and other platforms.
 
 
 ## Credits
@@ -572,9 +560,6 @@ The tutors played a crucial role in resolving these issues and providing guidanc
 I used code from the following resources:
 * Walk through project
 
-
 I used media from:
 * Took the Profile images from unsplash [Pictures site](https://unsplash.com/)
 * Took the icon from [Icons](https://fontawesome.com/)
-
-
